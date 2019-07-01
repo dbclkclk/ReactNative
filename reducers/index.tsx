@@ -8,8 +8,7 @@ export interface Counter {
 const counter = (state: Counter = { isUpdating: false, value: 0 }, action: Action): Counter => {
   switch (action.type) {
     case 'UPDATE':
-        let increment : number = state.value+1;
-        return { ...state, value: increment };
+        return { ...state, value: (state.value+1) };
     case 'UPDATING':
         return { ...state, isUpdating: action.isUpdating }
     default: 

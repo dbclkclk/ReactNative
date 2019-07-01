@@ -22,7 +22,7 @@ class HomeScreen extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Welcome</Text>
-        <Button styles={styles.button} title="Next" onPress={() => this.props.navigation.navigate("Counter")} />
+        <Button styles={styles.button} title="Next" onPress={() => this.props.navigation.navigate('Counter')} />
       </View>
     );
   }
@@ -32,7 +32,7 @@ const styles = StyleSheet.create<Style>({
 
     container: {
       flex: 1,
-      flexDirection: "column"
+      flexDirection: 'column'
     },
     button: {
       textAlign: 'center'

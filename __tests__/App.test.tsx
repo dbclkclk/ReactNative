@@ -11,8 +11,8 @@ describe('App', () => {
   const wrapper = shallow<App>(<App {...props} />);
                                
   describe('rendering', () => {
-    it('should render a <View />', () => {
-      expect(wrapper.find('View')).toHaveLength(1);
+    it('should render a <RootContainer />', () => {
+      expect(wrapper.find('RootContainer')).toHaveLength(1);
     });
   });
 });

@@ -14,8 +14,6 @@ import {
 /**
  * The Details screen
  */
-interface State {
-}
 
 interface OwnProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -32,13 +30,7 @@ interface StateProps {
 
 type Props = OwnProps & DispatchProps & StateProps;
 
-interface Style {
-  container: ViewStyle;
-  button: ViewStyle;
-  text: ViewStyle
-}
-
-class CounterScreen extends React.Component<Props, State> {
+class CounterScreen extends React.Component<Props, {}> {
   constructor(prop:Props) {
     super(prop)
     this.state = {
@@ -54,11 +46,17 @@ class CounterScreen extends React.Component<Props, State> {
   }
 };
 
+interface Style {
+  container: ViewStyle;
+  button: ViewStyle;
+  text: ViewStyle
+}
+
 const styles = StyleSheet.create<Style>({ 
 
     container: {
       flex: 1,
-      flexDirection: "column"
+      flexDirection: 'column'
     },
     button: {
       textAlign: 'center'

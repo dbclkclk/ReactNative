@@ -5,11 +5,11 @@ import homeScreen from '../screens/home';
 
 const RootStack = createStackNavigator(
   {
-    "Home":  homeScreen,
-    "Counter": counterScreen
+    'Home':  homeScreen,
+    'Counter': counterScreen
   }, 
   {
-      initialRouteName: "Home"
+      initialRouteName: 'Home'
   }
 );
 
