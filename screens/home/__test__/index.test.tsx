@@ -9,7 +9,7 @@ import {
   withNavigation
 } from 'react-navigation';
 
-const createTestProps = (props: Object) => ({
+const createTestProps = (props: any) => ({
   navigation: {
     navigate: jest.fn()
   },
@@ -23,10 +23,10 @@ describe('Test Home Screen', () => {
       props = createTestProps({});
       wrapper = shallow(<HomeScreen {...props} />);
     });
-    it("It should match initial snapshot", () => {
+    it('It should match initial snapshot', () => {
         expect(wrapper).toMatchSnapshot();
     });
-    it("It should call navigation when button is clicked", () => {
+    it('It should call navigation when button is clicked', () => {
         wrapper.find(Button).props().onPress({} as any);
         expect(props.navigation.navigate).toHaveBeenCalledWith('Counter');
     });

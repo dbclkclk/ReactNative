@@ -4,7 +4,7 @@ import {View, Button, Text} from 'react-native';
 import CounterScreen from '../counter';
 import { Counter } from '../../../reducers';
 
-const createTestProps = (props: Object) => ({
+const createTestProps = (props: any) => ({
   navigation: {
     navigate: jest.fn()
   },
@@ -15,12 +15,7 @@ const createTestProps = (props: Object) => ({
 describe('Test Home Screen', () => { 
     let wrapper : ShallowWrapper;
     let props: any;
-    let store : any;
-    const origConsole = console.error;
-    beforeEach(() => {
-         console.error = () => {};
-    });
-    it("It should match initial snapshot", () => {
+    it('It should match initial snapshot', () => {
         props = createTestProps({
             counter: {
                 value: 0,
@@ -30,7 +25,7 @@ describe('Test Home Screen', () => {
         wrapper = shallow(<CounterScreen {...props} />);
         expect(wrapper).toMatchSnapshot();
     });
-    it("It should display waiting message when isUpdating is true", () => {
+    it('It should display waiting message when isUpdating is true', () => {
         props = createTestProps({
             counter: {
                 value: 0,
@@ -38,12 +33,9 @@ describe('Test Home Screen', () => {
             }
         });
         wrapper = shallow(<CounterScreen {...props} />);
-        expect(wrapper.find(Button).render().text()).toBe("Please wait.....");
+        expect(wrapper.find(Button).render().text()).toBe('Please wait.....');
     });
-     afterEach(() => {
-      console.error = origConsole;
-    });
-    it("It should display counter as 1 when value state is 1", () => {
+    it('It should display counter as 1 when value state is 1', () => {
 
         props = createTestProps({
             counter: {
@@ -52,10 +44,10 @@ describe('Test Home Screen', () => {
             }
         });
         wrapper = shallow(<CounterScreen {...props} />);
-        expect(wrapper.find(Text).render().text()).toBe("Current counter: 1");
+        expect(wrapper.find(Text).render().text()).toBe('Current counter: 1');
        
     });
-    it("It should call increment when button is pressed", () => {
+    it('It should call increment when button is pressed', () => {
 
         props = createTestProps({
              counter: {

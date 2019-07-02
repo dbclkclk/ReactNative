@@ -1,61 +1,44 @@
-import { shallow, ShallowWrapper} from 'enzyme';
 import React from 'react';
+import {increment, updating, UpdateCounterAction, InProgressAction, counter}  from '../index';
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
+const middlewares = [ thunk ];
+const mockStore = configureMockStore(middlewares);
 
-describe('Action', () => { 
-    let wrapper : ShallowWrapper;
-    let props: any;
-    let store : any;
-    const origConsole = console.error;
-    beforeEach(() => {
-         console.error = () => {};
-    });
-    it("It should match initial snapshot", () => {
-        props = createTestProps({
-            counter: {
-                value: 0,
-                isUpdating: false
+describe('Test Action', () => { 
+    describe('Increment', () => {
+       it ('It should return Action of type UpdateCounterAction', () => {
+           const updateCounterAction : UpdateCounterAction = increment();
+           expect(updateCounterAction.type).toBe('UPDATE');
+       });
+   });
+   describe('Updating', () => {
+       it ('It should return Action of type InProgressAction that is true', () => {
+           const inProgressAction : InProgressAction = updating(true);
+           expect(inProgressAction.type).toBe('UPDATING');
+           expect(inProgressAction.isUpdating).toBe(true);
+       });
+       it ('It should return Action of type InProgressAction that is false', () => {
+           const inProgressAction : InProgressAction = updating(false);
+           expect(inProgressAction.type).toBe('UPDATING');
+           expect(inProgressAction.isUpdating).toBe(false);
+       });
+   });
+  /* describe('Action Creator counter', () => {
+       it('It should call updating=true, updating=false then increment', () => {
+           const initialState = {
+                 isUpdating: false,
+                 value: 0
             }
-        });
-        wrapper = shallow(<CounterScreen {...props} />);
-        expect(wrapper).toMatchSnapshot();
-    });
-    it("It should display waiting message when isUpdating is true", () => {
-        props = createTestProps({
-            counter: {
-                value: 0,
-                isUpdating: true
-            }
-        });
-        wrapper = shallow(<CounterScreen {...props} />);
-        expect(wrapper.find(Button).render().text()).toBe("Please wait.....");
-    });
-     afterEach(() => {
-      console.error = origConsole;
-    });
-    it("It should display counter as 1 when value state is 1", () => {
-
-        props = createTestProps({
-            counter: {
-                value: 1,
-                isUpdating: false
-            }
-        });
-        wrapper = shallow(<CounterScreen {...props} />);
-        expect(wrapper.find(Text).render().text()).toBe("Current counter: 1");
-       
-    });
-    it("It should call increment when button is pressed", () => {
-
-        props = createTestProps({
-             counter: {
-                value: 0,
-                isUpdating: false
-            }
-        });
-        wrapper = shallow(<CounterScreen {...props} />);
-        wrapper.find(Button).props().onPress({} as any);
-        expect(props.increment).toHaveBeenCalled();
-       
-    });
+            const store = mockStore(initialState);
+            return store.dispatch(counter()).then(() => {
+                const expectedActions = store.getActions();
+                expect(expectedActions.length).toBe(3);
+                expect(expectedActions[0]).toContainEqual({type: 'UPDATING', isUpdating: true});
+                expect(expectedActions[1]).toContainEqual({type: 'UPDATING', isUpdating: false});
+                expect(expectedActions[2]).toContainEqual({type: 'UPDATE'});
+            });
+       });
+   });*/
 })

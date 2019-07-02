@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import { Action } from '../actions'
-// States' definition
+import { Action } from '../actions';
+
 export interface Counter {
   isUpdating: boolean
   value?: number
 }
-const counter = (state: Counter = { isUpdating: false, value: 0 }, action: Action): Counter => {
+export const counter = (state: Counter = { isUpdating: false, value: 0 }, action: Action): Counter => {
   switch (action.type) {
     case 'UPDATE':
         return { ...state, value: (state.value+1) };
@@ -15,6 +15,7 @@ const counter = (state: Counter = { isUpdating: false, value: 0 }, action: Actio
         return state;
   }
 }
+
 export default combineReducers<Counter>({
   counter
 })
