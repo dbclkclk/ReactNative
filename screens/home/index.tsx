@@ -3,32 +3,28 @@ import { StyleSheet, Text, View, ViewStyle, Button} from 'react-native';
 import {
   NavigationParams,
   NavigationScreenProp,
-  NavigationState,
-  withNavigation
+  NavigationState
 } from 'react-navigation';
-
-interface Style {
-  container: ViewStyle;
-  button: ViewStyle;
-  text: ViewStyle
-}
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-class HomeScreen extends React.Component<Props> {
+export class HomeScreen extends React.Component<Props> {
+   constructor(prop:Props) {
+    super(prop);
+  }
   public render () {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Welcome</Text>
-        <Button styles={styles.button} title="Next" onPress={() => this.props.navigation.navigate('Counter')} />
+        <Button title="Next" onPress={() => this.props.navigation.navigate('Counter')} />
       </View>
     );
   }
 };
 
-const styles = StyleSheet.create<Style>({ 
+const styles = StyleSheet.create({ 
 
     container: {
       flex: 1,
@@ -43,4 +39,4 @@ const styles = StyleSheet.create<Style>({
     }
 });
 
-export default withNavigation(HomeScreen);
+export default HomeScreen;

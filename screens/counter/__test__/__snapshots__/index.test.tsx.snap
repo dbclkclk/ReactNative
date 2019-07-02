@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Home Screen It should match initial snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 18,
+        "textAlign": "center",
+      }
+    }
+  >
+    Current counter: 
+    0
+  </Text>
+  <Button
+    onPress={[Function]}
+    title="Press to increment"
+  />
+</View>
+`;
