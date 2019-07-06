@@ -34,11 +34,14 @@ export default class CounterScreen extends React.Component<Props> {
   constructor(prop:Props) {
     super(prop)
   }
+  public increment() {
+    this.props.increment()
+  }
   public render() {
     return (
         <View style={styles.container}>
           <Text style={styles.text}>Current counter: {this.props.counter.value}</Text>
-          <Button onPress={() => this.props.increment()} title={this.props.counter.isUpdating ? 'Please wait.....' : 'Press to increment'} />
+          <Button onPress={this.props.increment} title={this.props.counter.isUpdating ? 'Please wait.....' : 'Press to increment'} />
         </View>
     );
   }
