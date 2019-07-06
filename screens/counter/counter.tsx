@@ -34,9 +34,6 @@ export default class CounterScreen extends React.Component<Props> {
   constructor(prop:Props) {
     super(prop)
   }
-  public increment() {
-    this.props.increment()
-  }
   public render() {
     return (
         <View style={styles.container}>
