@@ -19,7 +19,7 @@ export const updating = (isUpdating: boolean): InProgressAction => {
 
 export const counter = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
   // Invoke API
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+  return (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
     return new Promise<void>((resolve) => {
         dispatch(updating(true));
         setTimeout(() => {
